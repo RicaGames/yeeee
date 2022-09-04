@@ -1,5 +1,5 @@
-local char = game.Players.LocalPlayer.Character
-local HumRPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+local char = game.Players.LocalPlayer.character
+local HumRPart = game.Players.LocalPlayer.character.HumanoidRootPart
 
 local ye = {}
 
