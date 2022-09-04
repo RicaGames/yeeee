@@ -1,0 +1,68 @@
+local char = game.Players.LocalPlayer.Character
+local HumRPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+local ye = {}
+
+if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Sus") then
+
+ game.Players.LocalPlayer.PlayerGui:FindFirstChild("Sus"):Destroy()
+
+end
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.Players.LocalPlayer.PlayerGui
+ScreenGui.Enabled = true
+ScreenGui.Name = "Sus"
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 1, 0, 163)
+
+local TextButton = Instance.new("TextButton")
+TextButton.Text = "GetFruit"
+TextButton.Name = "Sussy"
+TextButton.Parent = ScreenGui
+TextButton.Size = UDim2.new(0.1, 0,0.1, 0)
+TextButton.Position = UDim2.new(0.06, 0,0.1, 0)
+
+local function GoGet()
+print(ye)
+for i, v in ipairs (ye) do
+  local Handle = v[2]
+  
+  local Magnitude = (HumRPart.Position - Handle.Position).Magnitude
+
+  if Magnitude > 1000 then
+  
+  Handle.Position = HumRPart.Position     
+  else
+   
+  char:SetPrimaryPartCFrame(Handle.CFrame)  
+  end
+
+
+  
+  wait(3)
+  end
+
+end
+
+
+local function FindIt()
+for i, v in ipairs(game.Workspace:GetChildren()) do
+
+if v:IsA("Tool") or v.Name == "Fruit " then
+
+  local Handle = v:FindFirstChild("Handle")
+  local sup = {v, Handle}
+  table.insert(ye, 1, sup)
+  
+end
+
+end
+
+
+GoGet()
+end
+
+
+TextButton.MouseButton1Click:Connect(FindIt)
